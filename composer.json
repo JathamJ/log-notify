@@ -3,10 +3,14 @@
     "description": "A log package that notifies alarms while logging.",
     "type": "dev",
     "require": {
-        "php": ">=7.0"
+        "php": ">=7.0",
+        "ext-curl": "*",
+        "ext-redis": "*"
     },
     "require-dev": {
-        "php": ">=7.0"
+        "php": ">=7.0",
+        "ext-curl": "*",
+        "ext-redis": "*"
     },
     "license": "Apache-2.0",
     "autoload": {
