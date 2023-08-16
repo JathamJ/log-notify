@@ -9,7 +9,7 @@ composer require jathamj/log-notify
 ### 使用
 建议集成到日志包中
 
-```injectablephp
+```php
 
 $handler = new \Jathamj\LogNotify\Handler($config);
 
@@ -19,7 +19,7 @@ $handler->do('ERROR', '订单中心', ['orderId' => 2323, 'sd' => 'sadasd']);
 
 ### 配置参考
 
-```injectablephp
+```php
 return [
 
     //通知接口
