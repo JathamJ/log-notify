@@ -40,11 +40,10 @@ class Dingtalk implements Notify
             $url .= $this->getSign();
         }
         $data = json_encode($data);
-        var_dump($data);
         return Curl::init()->setOpt(\CURLOPT_HTTPHEADER, array ('Content-Type: application/json;charset=utf-8'))->post($url, $data);
     }
 
-    public function text($msg, $at = []): bool
+    public function text($msg): bool
     {
         $data = array(
             'msgtype' => 'text',
@@ -53,9 +52,6 @@ class Dingtalk implements Notify
             ],
             'isAtAll'   => false,
         );
-        if (!empty($at)) {
-            $data['atMobiles'] = $at;
-        }
         $ret = $this->request($data);
         if (empty($ret)) {
             return false;

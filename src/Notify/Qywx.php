@@ -11,7 +11,7 @@ class Qywx implements Notify
 
     }
 
-    public function text($msg, $at = []): bool
+    public function text($msg): bool
     {
         return true;
     }

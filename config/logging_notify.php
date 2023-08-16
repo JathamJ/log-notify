@@ -6,8 +6,8 @@ return [
     'api'    => array(
         'default'   => [
             'type'              => 'dingtalk',  //通知接口类型（钉钉）
-            'access_token'      => '41c67594b927babe9fdbbad116871983d92ec8a828f538cb18ab5ebe742547e2',
-            'secret'            => 'SECe530b5f2666a023be29f289f146f91fdc2e0fffe0207e5e3d0e883e11951cf79',
+            'access_token'      => '983d92ec8a828f538cb18a94b927babe9fdbbad116871b5ebe742547e241c675',
+            'secret'            => 'SECc2e0fffe0207e5e3d0e823be29f289f146f91fd83e11951cf79e530b5f2666a0',
         ],
     ),
 
@@ -26,7 +26,6 @@ return [
             'times'             => 3,           //warning触发报警次数
             'frequency'         => 600,         //warning报警间隔
             'error.frequency'   => 1,          //error报警间隔
-            'at'                => '13141132686',
         ],
     ),
 ];

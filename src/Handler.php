@@ -163,11 +163,6 @@ class Handler
             }
         }
 
-        $at = $this->modules[$module]['at'] ?? '';
-        if (!empty($at)) {
-            $at = explode(',', $at);
-        }
-
         //redisKey
         //发送过报警
         $hasSend = sprintf(self::HAS_SEND_KEY, $level, $module, $msgHash);
