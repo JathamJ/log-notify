@@ -171,7 +171,7 @@ class Handler
 
         //记录发生次数
         $now = time();
-        $this->redis->zAdd($timesKey, microtime(true), $now);
+        $this->redis->zAdd($timesKey, $now, microtime(true) . rand(0, 9999));
         $this->redis->expire($timesKey, $interval);
 
         //判断是否发送过报警
@@ -180,10 +180,18 @@ class Handler
         }
 
         //统计次数
-        $times = $this->redis->zCount($timesKey, $now - $interval, $now);
+        $occurTimes = $this->redis->zCount($timesKey, $now - $interval, $now);
+
+        if ($occurTimes < $times && $level == self::LEVEL_WARNING) {
+            return true;
+        }
+
+        if ($moduleText == self::DEFAULT_API || empty($moduleText)) {
+            $moduleText = '报警';
+        }
 
         //发送报警
-        $send = $notifyInstance->text(sprintf("【%s】[%s]%s\n%s内已发生%d次\n参数：\n%s", $level, $moduleText, $msg, Utils::s2text($interval), $times, json_encode($params)));
+        $send = $notifyInstance->text(sprintf("【%s】[%s]%s\n%s内已发生%d次\n参数：\n%s", $level, $moduleText, $msg, Utils::s2text($interval), $occurTimes, json_encode($params)));
 
         if ($send) {
             //记录发送过
