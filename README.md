@@ -39,7 +39,7 @@ return [
 
     //报警模块
     'modules'    => array(
-        'order'   => [
+        'default'   => [
             'api'               => 'default',    //通知接口 (对应api配置)
             'label'             => '订单中心',    //客户化名称
             'interval'          => 3600,        //统计周期
