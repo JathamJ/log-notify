@@ -183,7 +183,7 @@ class Handler
         $times = $this->redis->zCount($timesKey, $now - $interval, $now);
 
         //发送报警
-        $send = $notifyInstance->text(sprintf("【%s】[%s]%s\n%s内已发生%d次\n参数：\n%s", $level, $moduleText, $msg, Utils::s2text($interval), $times, json_encode($params)), $at);
+        $send = $notifyInstance->text(sprintf("【%s】[%s]%s\n%s内已发生%d次\n参数：\n%s", $level, $moduleText, $msg, Utils::s2text($interval), $times, json_encode($params)));
 
         if ($send) {
             //记录发送过
