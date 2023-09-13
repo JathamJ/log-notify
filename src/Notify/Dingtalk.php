@@ -5,6 +5,11 @@ namespace Jathamj\LogNotify\Notify;
 use Jathamj\LogNotify\Curl;
 use Jathamj\LogNotify\Notify;
 
+/**
+ * 钉钉机器人消息发送
+ * @doc https://open.dingtalk.com/document/robots/custom-robot-access#title-72m-8ag-pqw
+ * @doc https://open.dingtalk.com/document/robots/customize-robot-security-settings
+ */
 class Dingtalk implements Notify
 {
     const HOST = 'https://oapi.dingtalk.com/robot/send?access_token=';

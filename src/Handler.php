@@ -191,13 +191,38 @@ class Handler
         }
 
         //发送报警
-        $send = $notifyInstance->text(sprintf("【%s】[%s]%s\n%s内已发生%d次\n参数：\n%s", $level, $moduleText, $msg, Utils::s2text($interval), $occurTimes, json_encode($params)));
+        $text = sprintf("【%s】[%s]%s\n%s内已发生%d次\n参数：\n%s",
+            $level,
+            $moduleText,
+            $msg,
+            Utils::s2text($interval),
+            $occurTimes,
+            json_encode($params)
+        );
+
+        //扩展服务器信息
+        $text = $this->extendRemote($text);
+
+        $send = $notifyInstance->text($text);
 
         if ($send) {
             //记录发送过
             $this->redis->setex($hasSend, $frequency, 1);
         }
         return true;
+    }
+
+    protected function extendRemote($text)
+    {
+        $hostname = Utils::getHostName();
+        $remoteIp = Utils::getRemoteIp();
+        if (!empty($hostname)) {
+            $text .= "\nhostname: $hostname";
+        }
+        if (!empty($remoteIp)) {
+            $text .= "\nremoteIp: $remoteIp";
+        }
+        return $text;
     }
 
 }

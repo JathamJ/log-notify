@@ -5,7 +5,8 @@
     "require": {
         "php": ">=7.0.0",
         "ext-curl": "*",
-        "ext-redis": "*"
+        "ext-redis": "*",
+        "sentry/sdk": "dev-master"
     },
     "license": "Apache-2.0",
     "autoload": {
@@ -19,5 +20,10 @@
             "email": "mlqyb@foxmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
 }
