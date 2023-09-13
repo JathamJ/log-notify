@@ -6,7 +6,7 @@
         "php": ">=7.0.0",
         "ext-curl": "*",
         "ext-redis": "*",
-        "sentry/sdk": "dev-master"
+        "sentry/sdk": "3.5.0"
     },
     "license": "Apache-2.0",
     "autoload": {
